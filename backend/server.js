@@ -8,8 +8,21 @@ dotenv.config();
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'https://rental-electric-web-git-main-shraddhadhepes-projects.vercel.app',
+  'https://rental-electric-2csd4cg8y-shraddhadhepes-projects.vercel.app',
+  ...(process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',').map(o => o.trim()) : [])
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error(`CORS: origin ${origin} not allowed`));
+  },
   credentials: true
 }));
 app.use(express.json({ limit: '100mb' }));
