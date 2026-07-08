@@ -1,0 +1,56 @@
+.orders-page { padding: 32px 0 60px; }
+.orders-page h1 { font-size: 26px; font-weight: 800; color: #1a1a2e; margin-bottom: 24px; }
+.orders-list { display: flex; flex-direction: column; gap: 16px; }
+.order-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s;
+}
+.order-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.order-id { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-right: 12px; }
+.order-date { font-size: 13px; color: #718096; }
+.order-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.order-card-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.order-mini-item { display: flex; align-items: center; gap: 12px; }
+.order-mini-item img { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; flex-shrink: 0; background: #f8fafc; }
+.order-mini-item div { display: flex; flex-direction: column; gap: 2px; }
+.order-mini-item div span { font-size: 14px; font-weight: 500; color: #1a1a2e; }
+.order-mini-item div small { font-size: 12px; color: #718096; }
+.more-items { font-size: 12px; color: #6C63FF; font-weight: 600; margin-left: 64px; }
+.order-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0f0;
+}
+.order-total { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #718096; }
+.order-total strong { font-size: 18px; font-weight: 800; color: #1a1a2e; }
+.order-payment-status { font-size: 12px; font-weight: 700; }
+.view-order-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #6C63FF;
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.view-order-btn:hover { background: #5548D9; }

@@ -1,0 +1,133 @@
+.order-detail-page { padding: 28px 0 60px; }
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #6C63FF;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+.order-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.order-detail-header h1 { font-size: 24px; font-weight: 800; color: #1a1a2e; margin-bottom: 4px; }
+.order-detail-id { font-size: 13px; color: #718096; margin-right: 12px; font-family: monospace; }
+.order-detail-date { font-size: 13px; color: #718096; }
+.order-detail-status {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.order-tracking-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.order-tracking-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+}
+.tracking-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tracking-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #a0aec0;
+  font-size: 12px;
+  font-weight: 600;
+}
+.tracking-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+.tracking-step.done .tracking-dot { background: #22c55e; color: white; }
+.tracking-step.current .tracking-dot { background: #6C63FF; color: white; }
+.tracking-step.done { color: #22c55e; }
+.tracking-step.current { color: #6C63FF; }
+.tracking-line { flex: 1; height: 2px; background: #e2e8f0; min-width: 40px; margin: 0 4px; margin-bottom: 20px; }
+.tracking-line.done { background: #22c55e; }
+.tracking-number { font-size: 13px; color: #718096; margin-top: 14px; text-align: center; }
+
+.order-detail-layout { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+.order-detail-main { display: flex; flex-direction: column; gap: 16px; }
+.detail-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.detail-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+.detail-item { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+.detail-item:last-child { border-bottom: none; }
+.detail-item img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.detail-item-info { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.detail-item-info span { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+.detail-item-info small { font-size: 12px; color: #718096; }
+.detail-item strong { font-size: 15px; font-weight: 800; color: #1a1a2e; flex-shrink: 0; }
+
+.address-detail { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: #4a5568; }
+.address-detail strong { font-size: 15px; color: #1a1a2e; }
+
+.order-detail-summary { display: flex; flex-direction: column; gap: 16px; }
+.summary-rows { display: flex; flex-direction: column; gap: 10px; }
+.summary-row { display: flex; justify-content: space-between; font-size: 13px; color: #718096; }
+.summary-row.discount span:last-child { color: #22c55e; font-weight: 600; }
+.summary-divider { height: 1px; background: #f0f0f0; margin: 10px 0; }
+.summary-total { display: flex; justify-content: space-between; font-size: 16px; color: #1a1a2e; }
+.summary-total strong { font-size: 18px; font-weight: 800; }
+.payment-status-badge { font-size: 12px; font-weight: 700; margin-top: 10px; }
+.payment-id { font-size: 11px; color: #a0aec0; margin-top: 4px; font-family: monospace; }
+
+.cancel-order-btn {
+  width: 100%;
+  padding: 12px;
+  background: #fee2e2;
+  border: 1.5px solid #fca5a5;
+  color: #ef4444;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.cancel-order-btn:hover { background: #ef4444; color: white; }
+
+@media (max-width: 768px) {
+  .order-detail-layout { grid-template-columns: 1fr; }
+  .tracking-step span { display: none; }
+}
