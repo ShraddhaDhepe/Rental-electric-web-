@@ -81,7 +81,7 @@ const AdminUsers = () => {
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                           <div style={{
                             width: 36, height: 36, borderRadius: '50%',
-                            background: 'linear-gradient(135deg, #6C63FF, #5548D9)',
+                            background: 'linear-gradient(135deg, #E8201A, #C41810)',
                             color: 'white', display: 'flex', alignItems: 'center',
                             justifyContent: 'center', fontWeight: 700, fontSize: 14, flexShrink: 0
                           }}>
@@ -96,8 +96,8 @@ const AdminUsers = () => {
                       <td>{u.phone || '—'}</td>
                       <td>
                         <span style={{
-                          background: u.role === 'admin' ? '#eef2ff' : '#f8fafc',
-                          color: u.role === 'admin' ? '#6C63FF' : '#718096',
+                          background: u.role === 'admin' ? '#fff0ef' : '#f8fafc',
+                          color: u.role === 'admin' ? '#E8201A' : '#718096',
                           padding: '3px 10px',
                           borderRadius: 20,
                           fontSize: 12,
@@ -137,3 +137,4 @@ const AdminUsers = () => {
 };
 
 export default AdminUsers;
+

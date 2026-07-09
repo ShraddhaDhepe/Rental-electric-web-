@@ -26,8 +26,8 @@
   font-size: 13px;
   font-weight: 700;
 }
-.checkout-step.active { color: #6C63FF; }
-.checkout-step.active span { background: #6C63FF; color: white; }
+.checkout-step.active { color: #E8201A; }
+.checkout-step.active span { background: #E8201A; color: white; }
 .checkout-step.done { color: #22c55e; }
 .checkout-step.done svg { font-size: 22px; color: #22c55e; }
 .step-line {
@@ -64,8 +64,8 @@
   transition: all 0.2s;
   align-items: flex-start;
 }
-.address-card:hover { border-color: #6C63FF; }
-.address-card.selected { border-color: #6C63FF; background: #f7f5ff; }
+.address-card:hover { border-color: #E8201A; }
+.address-card.selected { border-color: #E8201A; background: #fff8f7; }
 .address-radio { padding-top: 2px; flex-shrink: 0; }
 .radio-dot {
   width: 18px;
@@ -77,12 +77,12 @@
   justify-content: center;
   transition: all 0.2s;
 }
-.radio-dot.active { border-color: #6C63FF; background: #6C63FF; box-shadow: inset 0 0 0 3px white; }
+.radio-dot.active { border-color: #E8201A; background: #E8201A; box-shadow: inset 0 0 0 3px white; }
 .address-details { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: #718096; }
 .address-details strong { font-size: 14px; color: #1a1a2e; }
 .default-badge {
-  background: #eef2ff;
-  color: #6C63FF;
+  background: #fff0ef;
+  color: #E8201A;
   font-size: 10px;
   font-weight: 700;
   padding: 2px 7px;
@@ -94,8 +94,8 @@
   align-items: center;
   gap: 6px;
   background: none;
-  border: 1.5px dashed #6C63FF;
-  color: #6C63FF;
+  border: 1.5px dashed #E8201A;
+  color: #E8201A;
   padding: 10px 18px;
   border-radius: 10px;
   font-size: 14px;
@@ -105,7 +105,7 @@
   margin-bottom: 16px;
   transition: all 0.2s;
 }
-.add-address-btn:hover { background: #eef2ff; }
+.add-address-btn:hover { background: #fff0ef; }
 .new-address-form { padding: 20px; background: #f8fafc; border-radius: 12px; margin-bottom: 16px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
@@ -125,7 +125,7 @@
 .selected-address-display button {
   background: none;
   border: none;
-  color: #6C63FF;
+  color: #E8201A;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
@@ -142,14 +142,14 @@
   margin-bottom: 20px;
   cursor: pointer;
 }
-.payment-method-card.selected { border-color: #6C63FF; background: #f7f5ff; }
+.payment-method-card.selected { border-color: #E8201A; background: #fff8f7; }
 .payment-method-radio {
   width: 18px;
   height: 18px;
   border-radius: 50%;
   border: 2px solid #e2e8f0;
 }
-.payment-method-radio.active { border-color: #6C63FF; background: #6C63FF; box-shadow: inset 0 0 0 3px white; }
+.payment-method-radio.active { border-color: #E8201A; background: #E8201A; box-shadow: inset 0 0 0 3px white; }
 .payment-method-info { flex: 1; display: flex; align-items: center; gap: 10px; }
 .payment-method-info strong { font-size: 15px; color: #1a1a2e; }
 .payment-method-info span { font-size: 12px; color: #718096; }
@@ -158,7 +158,7 @@
 .pay-now-btn {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, #6C63FF, #5548D9);
+  background: linear-gradient(135deg, #E8201A, #C41810);
   color: white;
   border: none;
   border-radius: 12px;
@@ -171,10 +171,10 @@
   gap: 8px;
   transition: all 0.3s;
   font-family: inherit;
-  box-shadow: 0 4px 16px rgba(108,99,255,0.3);
+  box-shadow: 0 4px 16px rgba(232,32,26,0.3);
   margin-bottom: 12px;
 }
-.pay-now-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,99,255,0.4); }
+.pay-now-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,32,26,0.4); }
 .pay-now-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 .btn-spinner {
   width: 16px;

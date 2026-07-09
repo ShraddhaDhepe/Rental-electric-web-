@@ -188,7 +188,7 @@ const AdminAddProduct = () => {
                   ['isNewArrival', 'New Arrival']
                 ].map(([key, label]) => (
                   <label key={key} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, cursor: 'pointer' }}>
-                    <input type="checkbox" checked={form[key]} onChange={e => setField(key, e.target.checked)} style={{ accentColor: '#6C63FF' }} />
+                    <input type="checkbox" checked={form[key]} onChange={e => setField(key, e.target.checked)} style={{ accentColor: '#E8201A' }} />
                     {label}
                   </label>
                 ))}
@@ -330,3 +330,4 @@ const AdminAddProduct = () => {
 };
 
 export default AdminAddProduct;
+

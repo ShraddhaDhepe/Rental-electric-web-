@@ -3,7 +3,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #6C63FF;
+  color: #E8201A;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -67,9 +67,9 @@
   font-weight: 700;
 }
 .tracking-step.done .tracking-dot { background: #22c55e; color: white; }
-.tracking-step.current .tracking-dot { background: #6C63FF; color: white; }
+.tracking-step.current .tracking-dot { background: #E8201A; color: white; }
 .tracking-step.done { color: #22c55e; }
-.tracking-step.current { color: #6C63FF; }
+.tracking-step.current { color: #E8201A; }
 .tracking-line { flex: 1; height: 2px; background: #e2e8f0; min-width: 40px; margin: 0 4px; margin-bottom: 20px; }
 .tracking-line.done { background: #22c55e; }
 .tracking-number { font-size: 13px; color: #718096; margin-top: 14px; text-align: center; }
@@ -131,3 +131,4 @@
   .order-detail-layout { grid-template-columns: 1fr; }
   .tracking-step span { display: none; }
 }
+

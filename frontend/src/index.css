@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Brand colors from logo */
+  /* Brand colors — Red primary, Navy secondary, Gold accent */
   --primary: #E8201A;
   --primary-dark: #C41810;
   --primary-light: #FFF0EF;
-  --secondary: #F5B800;
-  --secondary-dark: #D49E00;
-  --secondary-light: #FFFBEA;
+  --secondary: #1a1a2e;
+  --secondary-dark: #0f0f1a;
+  --secondary-light: #f0f0f7;
   --accent: #F5B800;
+  --accent-dark: #D49E00;
+  --accent-light: #FFFBEA;
 
   /* Status colors */
   --success: #22c55e;

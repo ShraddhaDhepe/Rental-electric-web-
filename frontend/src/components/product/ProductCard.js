@@ -95,6 +95,13 @@ const ProductCard = ({ product }) => {
                 )}
               </div>
             )}
+            {product.availableForBuy && product.buyPrice >= 5000 && (
+              <div className="emi-row">
+                <span className="emi-label">EMI</span>
+                <span className="emi-amount">₹{Math.round(product.buyPrice / 12).toLocaleString('en-IN')}/mo</span>
+                <span className="emi-info">0% for 12mo</span>
+              </div>
+            )}
             {product.availableForRent && minRental && (
               <div className="rent-price-row">
                 <span className="price-label rent-label">Rent</span>

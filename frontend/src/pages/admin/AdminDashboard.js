@@ -43,7 +43,7 @@ const AdminDashboard = () => {
         {/* Stats */}
         <div className="stats-grid">
           <StatCard icon={<FaRupeeSign />} label="Total Revenue" value={formatCurrency(stats?.totalRevenue || 0)} color="#22c55e" />
-          <StatCard icon={<FaShoppingCart />} label="Total Orders" value={stats?.totalOrders || 0} color="#6C63FF" />
+          <StatCard icon={<FaShoppingCart />} label="Total Orders" value={stats?.totalOrders || 0} color="#E8201A" />
           <StatCard icon={<FaUsers />} label="Total Users" value={stats?.totalUsers || 0} color="#3b82f6" />
           <StatCard icon={<FaTv />} label="Total Products" value={stats?.totalProducts || 0} color="#f59e0b" />
         </div>
@@ -126,3 +126,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

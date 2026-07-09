@@ -119,7 +119,7 @@ const CheckoutPage = () => {
           email: user?.email,
           contact: user?.phone || ''
         },
-        theme: { color: '#6C63FF' },
+        theme: { color: '#E8201A' },
         modal: {
           ondismiss: function () {
             toast.error('Payment cancelled');
@@ -328,3 +328,4 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+

@@ -5,21 +5,34 @@ import { logout } from '../../store/slices/authSlice';
 import {
   FaShoppingCart, FaHeart, FaUser, FaBars, FaTimes,
   FaSearch, FaChevronDown, FaTv, FaSnowflake,
-  FaWind, FaLaptop, FaMobileAlt, FaTshirt, FaBolt
+  FaWind, FaLaptop, FaMobileAlt, FaTshirt, FaBolt,
+  FaMapMarkerAlt, FaPhoneAlt, FaCouch, FaTag, FaQuestionCircle,
+  FaHeadset
 } from 'react-icons/fa';
 import { BrandLogo } from '../common/BrandLogo';
 import './Navbar.css';
 
 const categories = [
-  { name: 'Television',     icon: <FaTv />,        slug: 'Television' },
-  { name: 'Refrigerator',   icon: <FaSnowflake />, slug: 'Refrigerator' },
-  { name: 'Washing Machine',icon: <FaTshirt />,    slug: 'Washing Machine' },
-  { name: 'Air Conditioner',icon: <FaWind />,      slug: 'Air Conditioner' },
-  { name: 'Laptop',         icon: <FaLaptop />,    slug: 'Laptop' },
-  { name: 'Smartphone',     icon: <FaMobileAlt />, slug: 'Smartphone' },
-  { name: 'Microwave',      icon: <FaBolt />,      slug: 'Microwave' },
-  { name: 'Geyser',         icon: <FaBolt />,      slug: 'Geyser' }
+  { name: 'Television',     icon: <FaTv />,        slug: 'Television',      group: 'Electronics' },
+  { name: 'Laptop',         icon: <FaLaptop />,    slug: 'Laptop',          group: 'Electronics' },
+  { name: 'Smartphone',     icon: <FaMobileAlt />, slug: 'Smartphone',      group: 'Electronics' },
+  { name: 'Refrigerator',   icon: <FaSnowflake />, slug: 'Refrigerator',    group: 'Appliances' },
+  { name: 'Washing Machine',icon: <FaTshirt />,    slug: 'Washing Machine', group: 'Appliances' },
+  { name: 'Air Conditioner',icon: <FaWind />,      slug: 'Air Conditioner', group: 'Appliances' },
+  { name: 'Microwave',      icon: <FaBolt />,      slug: 'Microwave',       group: 'Appliances' },
+  { name: 'Geyser',         icon: <FaBolt />,      slug: 'Geyser',          group: 'Appliances' },
 ];
+
+const navLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'Electronics', path: '/products?category=Laptop', hasDropdown: true, group: 'Electronics' },
+  { label: 'Appliances', path: '/products?category=Refrigerator', hasDropdown: true, group: 'Appliances' },
+  { label: 'Offers', path: '/offers' },
+  { label: 'Blog', path: '/blog' },
+  { label: 'Support', path: '/support' },
+];
+
+const cities = ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata', 'Ahmedabad'];
 
 const Navbar = () => {
   const dispatch   = useDispatch();
@@ -32,27 +45,29 @@ const Navbar = () => {
   const [mobileOpen,    setMobileOpen]    = useState(false);
   const [searchQuery,   setSearchQuery]   = useState('');
   const [dropdownOpen,  setDropdownOpen]  = useState(false);
-  const [categoryOpen,  setCategoryOpen]  = useState(false);
+  const [activeNavDrop, setActiveNavDrop] = useState(null);
+  const [cityDropOpen,  setCityDropOpen]  = useState(false);
+  const [selectedCity,  setSelectedCity]  = useState('Bangalore');
 
-  /* separate refs so clicks don't interfere */
   const userRef = useRef(null);
-  const catRef  = useRef(null);
+  const navRef  = useRef(null);
+  const cityRef = useRef(null);
 
   const cartCount     = cart?.items?.length || 0;
   const wishlistCount = wishlist?.products?.length || 0;
 
-  /* close everything on route change */
   useEffect(() => {
     setMobileOpen(false);
     setDropdownOpen(false);
-    setCategoryOpen(false);
+    setActiveNavDrop(null);
+    setCityDropOpen(false);
   }, [location.pathname]);
 
-  /* close user dropdown on outside click */
   useEffect(() => {
     const handleClick = e => {
       if (userRef.current && !userRef.current.contains(e.target)) setDropdownOpen(false);
-      if (catRef.current  && !catRef.current.contains(e.target))  setCategoryOpen(false);
+      if (navRef.current  && !navRef.current.contains(e.target))  setActiveNavDrop(null);
+      if (cityRef.current && !cityRef.current.contains(e.target)) setCityDropOpen(false);
     };
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -77,14 +92,27 @@ const Navbar = () => {
     navigate(path);
   };
 
+  const getCategoriesForGroup = (group) =>
+    categories.filter(c => c.group === group);
+
   return (
     <nav className="navbar">
 
       {/* ── Top bar ── */}
       <div className="navbar-top">
         <div className="container navbar-top-inner">
-          <span>🚀 Free delivery on orders above ₹999 &nbsp;|&nbsp; RENT SMART. OWN LESS.</span>
-          <span>📞 1800-123-4567 &nbsp;|&nbsp; Mon–Sat 9AM–8PM</span>
+          <div className="top-bar-left">
+            <span>🚀 Free delivery on orders above ₹999</span>
+            <span className="top-divider">|</span>
+            <span>RENT SMART. OWN LESS.</span>
+          </div>
+          <div className="top-bar-right">
+            <a href="tel:18001234567" className="top-link"><FaPhoneAlt size={11} /> 1800-123-4567</a>
+            <span className="top-divider">|</span>
+            <Link to="/support" className="top-link"><FaHeadset size={11} /> Support</Link>
+            <span className="top-divider">|</span>
+            <Link to="/faq" className="top-link"><FaQuestionCircle size={11} /> FAQ</Link>
+          </div>
         </div>
       </div>
 
@@ -97,11 +125,42 @@ const Navbar = () => {
             <BrandLogo size="md" />
           </Link>
 
+          {/* Location Selector */}
+          <div className="location-selector" ref={cityRef}>
+            <button
+              className="location-btn"
+              onClick={() => setCityDropOpen(o => !o)}
+              aria-label="Select city"
+            >
+              <FaMapMarkerAlt className="loc-icon" />
+              <div className="loc-text">
+                <span className="loc-label">Deliver to</span>
+                <span className="loc-city">{selectedCity} <FaChevronDown size={9} /></span>
+              </div>
+            </button>
+            {cityDropOpen && (
+              <div className="city-dropdown">
+                <p className="city-dropdown-title">Select your city</p>
+                <div className="city-grid">
+                  {cities.map(city => (
+                    <button
+                      key={city}
+                      className={`city-item ${selectedCity === city ? 'active' : ''}`}
+                      onClick={() => { setSelectedCity(city); setCityDropOpen(false); }}
+                    >
+                      {city}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Search */}
           <form className="navbar-search" onSubmit={handleSearch}>
             <input
               type="text"
-              placeholder="Search TVs, Fridges, Laptops..."
+              placeholder="Search TVs, Fridges, Laptops, ACs..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -112,15 +171,16 @@ const Navbar = () => {
           <div className="navbar-actions">
             <Link to="/wishlist" className="nav-icon-btn" aria-label="Wishlist">
               <FaHeart />
+              <span className="nav-icon-label">Wishlist</span>
               {wishlistCount > 0 && <span className="badge-count">{wishlistCount}</span>}
             </Link>
             <Link to="/cart" className="nav-icon-btn" aria-label="Cart">
               <FaShoppingCart />
+              <span className="nav-icon-label">Cart</span>
               {cartCount > 0 && <span className="badge-count">{cartCount}</span>}
             </Link>
 
             {isAuthenticated ? (
-              /* ── User dropdown ── */
               <div className="user-menu" ref={userRef}>
                 <button
                   className="user-btn"
@@ -130,7 +190,10 @@ const Navbar = () => {
                   <div className="user-avatar">
                     {user?.name?.charAt(0).toUpperCase()}
                   </div>
-                  <span className="user-name">{user?.name?.split(' ')[0]}</span>
+                  <div className="user-btn-text">
+                    <span className="user-greeting">Hello,</span>
+                    <span className="user-name">{user?.name?.split(' ')[0]}</span>
+                  </div>
                   <FaChevronDown size={11} style={{ transition: 'transform .2s', transform: dropdownOpen ? 'rotate(180deg)' : 'none' }} />
                 </button>
 
@@ -140,7 +203,6 @@ const Navbar = () => {
                       <strong>{user?.name}</strong>
                       <small>{user?.email}</small>
                     </div>
-
                     <button className="dropdown-item" onClick={() => goTo('/profile')}>
                       <FaUser size={13} /> My Profile
                     </button>
@@ -150,13 +212,11 @@ const Navbar = () => {
                     <button className="dropdown-item" onClick={() => goTo('/wishlist')}>
                       <FaHeart size={13} /> Wishlist
                     </button>
-
                     {user?.role === 'admin' && (
                       <button className="dropdown-item admin-item" onClick={() => goTo('/admin')}>
                         ⚙️ Admin Panel
                       </button>
                     )}
-
                     <button className="dropdown-item logout-item" onClick={handleLogout}>
                       🚪 Logout
                     </button>
@@ -181,26 +241,27 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ── Category bar ── */}
-      <div className="navbar-categories">
-        <div className="container categories-inner">
+      {/* ── Main Nav Links bar ── */}
+      <div className="navbar-nav" ref={navRef}>
+        <div className="container nav-links-inner">
 
-          {/* All categories dropdown */}
-          <div className="category-dropdown-wrapper" ref={catRef}>
-            <button
-              className="all-categories-btn"
-              onClick={() => setCategoryOpen(o => !o)}
-            >
-              <FaBars /> All Categories <FaChevronDown size={11} />
+          {/* All Categories dropdown */}
+          <div
+            className="nav-item has-dropdown"
+            onMouseEnter={() => setActiveNavDrop('all')}
+            onMouseLeave={() => setActiveNavDrop(null)}
+          >
+            <button className="all-categories-btn">
+              <FaBars /> All Categories <FaChevronDown size={10} />
             </button>
-            {categoryOpen && (
+            {activeNavDrop === 'all' && (
               <div className="categories-mega-menu">
                 {categories.map(cat => (
                   <Link
                     key={cat.slug}
                     to={`/products?category=${cat.slug}`}
                     className="mega-menu-item"
-                    onClick={() => setCategoryOpen(false)}
+                    onClick={() => setActiveNavDrop(null)}
                   >
                     <span className="cat-icon">{cat.icon}</span>
                     {cat.name}
@@ -210,16 +271,54 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Quick links */}
-          <div className="quick-links">
-            <Link to="/products?orderType=rent"    className="quick-link">🏷️ Rent</Link>
-            <Link to="/products?orderType=buy"     className="quick-link">🛒 Buy</Link>
-            <Link to="/products?isFeatured=true"   className="quick-link">⭐ Featured</Link>
-            <Link to="/products?isNewArrival=true" className="quick-link">🆕 New</Link>
-            <Link to="/products?category=Television"   className="quick-link">📺 TV</Link>
-            <Link to="/products?category=Laptop"        className="quick-link">💻 Laptop</Link>
-            <Link to="/products?category=Refrigerator" className="quick-link">🧊 Fridge</Link>
-            <Link to="/products?category=Air Conditioner" className="quick-link">❄️ AC</Link>
+          {/* Nav Links */}
+          {navLinks.map(link => (
+            <div
+              key={link.label}
+              className="nav-item"
+              onMouseEnter={() => link.hasDropdown ? setActiveNavDrop(link.group) : null}
+              onMouseLeave={() => setActiveNavDrop(null)}
+            >
+              <Link
+                to={link.path}
+                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+              >
+                {link.label}
+                {link.hasDropdown && <FaChevronDown size={10} />}
+              </Link>
+              {link.hasDropdown && activeNavDrop === link.group && (
+                <div className="nav-dropdown">
+                  {getCategoriesForGroup(link.group).map(cat => (
+                    <Link
+                      key={cat.slug}
+                      to={`/products?category=${cat.slug}`}
+                      className="nav-dropdown-item"
+                      onClick={() => setActiveNavDrop(null)}
+                    >
+                      <span className="cat-icon">{cat.icon}</span>
+                      {cat.name}
+                    </Link>
+                  ))}
+                  <Link
+                    to={`/products?category=${link.group === 'Electronics' ? 'Laptop' : 'Refrigerator'}`}
+                    className="nav-dropdown-all"
+                    onClick={() => setActiveNavDrop(null)}
+                  >
+                    View All {link.group} →
+                  </Link>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* Quick rent/buy links */}
+          <div className="nav-quick-links">
+            <Link to="/products?orderType=rent" className="nav-link rent-link">
+              <FaTag size={11} /> Rent Now
+            </Link>
+            <Link to="/offers" className="nav-link offers-link">
+              🔥 Hot Deals
+            </Link>
           </div>
         </div>
       </div>
@@ -237,28 +336,48 @@ const Navbar = () => {
             <button type="submit"><FaSearch /></button>
           </form>
 
+          <div className="mobile-location">
+            <FaMapMarkerAlt />
+            <select
+              value={selectedCity}
+              onChange={e => setSelectedCity(e.target.value)}
+            >
+              {cities.map(c => <option key={c}>{c}</option>)}
+            </select>
+          </div>
+
           <div className="mobile-links">
-            <Link to="/">Home</Link>
-            <Link to="/products">All Products</Link>
-            <Link to="/products?orderType=rent">Rent Electronics</Link>
-            <Link to="/products?orderType=buy">Buy Electronics</Link>
-            {categories.map(cat => (
-              <Link key={cat.slug} to={`/products?category=${cat.slug}`}>
-                {cat.name}
-              </Link>
-            ))}
+            <Link to="/">🏠 Home</Link>
+            <Link to="/products">📦 All Products</Link>
+            <Link to="/products?orderType=rent">🏷️ Rent Electronics</Link>
+            <Link to="/products?orderType=buy">🛒 Buy Electronics</Link>
+            <Link to="/offers">🔥 Offers & Deals</Link>
+            <div className="mobile-section-title">Electronics</div>
+            <Link to="/products?category=Television">📺 Television</Link>
+            <Link to="/products?category=Laptop">💻 Laptop</Link>
+            <Link to="/products?category=Smartphone">📱 Smartphone</Link>
+            <div className="mobile-section-title">Appliances</div>
+            <Link to="/products?category=Refrigerator">🧊 Refrigerator</Link>
+            <Link to="/products?category=Air Conditioner">❄️ Air Conditioner</Link>
+            <Link to="/products?category=Washing Machine">🫧 Washing Machine</Link>
+            <div className="mobile-section-title">Help & Info</div>
+            <Link to="/blog">📝 Blog</Link>
+            <Link to="/support">🎧 Support</Link>
+            <Link to="/faq">❓ FAQ</Link>
+            <Link to="/rent-vs-buy">📊 Rent vs Buy Calculator</Link>
             {isAuthenticated ? (
               <>
-                <Link to="/profile">My Profile</Link>
-                <Link to="/orders">My Orders</Link>
-                <Link to="/wishlist">Wishlist</Link>
-                {user?.role === 'admin' && <Link to="/admin">Admin Panel</Link>}
+                <div className="mobile-section-title">My Account</div>
+                <Link to="/profile">👤 My Profile</Link>
+                <Link to="/orders">📋 My Orders</Link>
+                <Link to="/wishlist">❤️ Wishlist</Link>
+                {user?.role === 'admin' && <Link to="/admin">⚙️ Admin Panel</Link>}
                 <button onClick={handleLogout} className="mobile-logout">🚪 Logout</button>
               </>
             ) : (
               <>
                 <Link to="/login">Login</Link>
-                <Link to="/register">Sign Up</Link>
+                <Link to="/register">Sign Up Free</Link>
               </>
             )}
           </div>

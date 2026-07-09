@@ -306,13 +306,13 @@ const ProductDetailPage = () => {
         {/* Tabs */}
         <div className="detail-tabs">
           <div className="tab-nav">
-            {['description', 'specifications', 'reviews'].map(tab => (
+            {['description', 'specifications', 'why-rent', 'reviews'].map(tab => (
               <button
                 key={tab}
                 className={activeTab === tab ? 'active' : ''}
                 onClick={() => setActiveTab(tab)}
               >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {tab === 'why-rent' ? '💡 Why Rent?' : tab.charAt(0).toUpperCase() + tab.slice(1)}
                 {tab === 'reviews' && ` (${product.numReviews})`}
               </button>
             ))}
@@ -331,6 +331,74 @@ const ProductDetailPage = () => {
                       ))}
                     </ul>
                   </>
+                )}
+              </div>
+            )}
+
+            {activeTab === 'why-rent' && (
+              <div className="tab-why-rent">
+                <h4>Why Rent Instead of Buy?</h4>
+                <div className="why-rent-benefits">
+                  <div className="benefit-item">
+                    <span className="benefit-icon">💰</span>
+                    <div>
+                      <strong>Save Upfront Capital</strong>
+                      <p>No large one-time payment. Pay a small monthly rent and preserve your savings for other needs.</p>
+                    </div>
+                  </div>
+                  <div className="benefit-item">
+                    <span className="benefit-icon">🔧</span>
+                    <div>
+                      <strong>Zero Maintenance Cost</strong>
+                      <p>All repairs and maintenance during your rental period are free. We send technicians at no extra charge.</p>
+                    </div>
+                  </div>
+                  <div className="benefit-item">
+                    <span className="benefit-icon">🔄</span>
+                    <div>
+                      <strong>Upgrade to Newer Models</strong>
+                      <p>Technology evolves fast. With rental, switch to the latest models without being stuck with outdated gadgets.</p>
+                    </div>
+                  </div>
+                  <div className="benefit-item">
+                    <span className="benefit-icon">📦</span>
+                    <div>
+                      <strong>Flexible Tenure</strong>
+                      <p>Rent for 3, 6, or 12 months. Return when you don't need it. No long-term commitment required.</p>
+                    </div>
+                  </div>
+                  <div className="benefit-item">
+                    <span className="benefit-icon">🚛</span>
+                    <div>
+                      <strong>Free Delivery & Setup</strong>
+                      <p>Professional installation at your doorstep at no additional cost. We handle everything.</p>
+                    </div>
+                  </div>
+                  <div className="benefit-item">
+                    <span className="benefit-icon">🎁</span>
+                    <div>
+                      <strong>Option to Own Later</strong>
+                      <p>Loved the product? Buy it at a special discounted price at any point during or after your rental.</p>
+                    </div>
+                  </div>
+                </div>
+                {product.availableForRent && (
+                  <div className="damage-protection">
+                    <h4>💛 Damage Protection Plan</h4>
+                    <p>Add damage protection for peace of mind. Covers accidental damage including drops and liquid spills.</p>
+                    <div className="protection-plans">
+                      <div className="protection-option">
+                        <strong>Basic Plan</strong>
+                        <span>₹99/month</span>
+                        <small>Covers minor accidental damage</small>
+                      </div>
+                      <div className="protection-option">
+                        <strong>Premium Plan</strong>
+                        <span>₹199/month</span>
+                        <small>Full coverage including theft</small>
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
             )}

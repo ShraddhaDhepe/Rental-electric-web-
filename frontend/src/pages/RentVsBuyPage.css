@@ -1,0 +1,113 @@
+.rvb-page { padding-bottom: 60px; }
+
+.rvb-hero {
+  background: linear-gradient(135deg, #1a1a2e, #2d2d5e);
+  padding: 60px 0 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.rvb-hero-icon {
+  font-size: 48px; color: #F5B800; margin-bottom: 14px;
+}
+.rvb-hero h1 { font-size: 36px; font-weight: 800; color: white; margin-bottom: 10px; }
+.rvb-hero p { font-size: 16px; color: rgba(255,255,255,0.7); }
+
+.rvb-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.rvb-calculator {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  position: sticky;
+  top: 100px;
+}
+.rvb-calculator h2 { font-size: 20px; font-weight: 800; color: #1a1a2e; margin-bottom: 24px; }
+
+.range-input {
+  width: 100%; height: 6px;
+  accent-color: #E8201A;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+.range-labels {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: #718096;
+}
+
+.rvb-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.rvb-section { background: #f8fafc; border-radius: 12px; padding: 16px; }
+.rvb-section h3 { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 14px; }
+
+.rvb-results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.rvb-results h2 { font-size: 20px; font-weight: 800; color: #1a1a2e; }
+
+.winner-badge {
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 20px; border-radius: 12px;
+  font-size: 15px; font-weight: 700;
+}
+.rent-winner { background: linear-gradient(135deg, #dcfce7, #bbf7d0); color: #15803d; }
+.buy-winner  { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1d4ed8; }
+.winner-badge svg { font-size: 20px; flex-shrink: 0; }
+
+.results-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.result-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+  transition: border-color 0.2s;
+}
+.result-card.winner { border-color: #E8201A; }
+.result-card h3 { font-size: 14px; font-weight: 700; color: #4a5568; margin-bottom: 8px; }
+.result-amount { font-size: 28px; font-weight: 800; color: #1a1a2e; margin-bottom: 16px; }
+
+.result-breakdown { display: flex; flex-direction: column; gap: 6px; }
+.breakdown-row {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: #718096;
+}
+.breakdown-row.refund span:last-child { color: #22c55e; }
+.breakdown-row.total {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 6px; margin-top: 4px;
+  font-size: 13px; font-weight: 700; color: #1a1a2e;
+}
+.winner-label {
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: #E8201A; color: white;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 12px; border-radius: 50px; white-space: nowrap;
+}
+
+.rvb-guide { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.guide-section { background: #f8fafc; border-radius: 12px; padding: 16px; }
+.guide-section h4 { font-size: 13px; font-weight: 700; color: #1a1a2e; margin-bottom: 12px; }
+.guide-section ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.guide-section li {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; color: #4a5568;
+}
+.guide-section li svg { color: #22c55e; flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .rvb-layout { grid-template-columns: 1fr; }
+  .rvb-calculator { position: static; }
+}
+@media (max-width: 600px) {
+  .rvb-split { grid-template-columns: 1fr; }
+  .results-comparison { grid-template-columns: 1fr; }
+  .rvb-guide { grid-template-columns: 1fr; }
+}

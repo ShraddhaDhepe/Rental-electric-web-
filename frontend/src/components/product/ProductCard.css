@@ -163,3 +163,17 @@
   display: flex; align-items: center;
 }
 .rent-btn:hover { background: #E8201A; color: white; }
+
+/* EMI row */
+.emi-row {
+  display: flex; align-items: center; gap: 5px;
+  background: #f0f7ff; border-radius: 6px;
+  padding: 3px 7px; margin-top: 2px;
+}
+.emi-label {
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  background: #1a1a2e; color: white;
+  padding: 2px 5px; border-radius: 3px; flex-shrink: 0;
+}
+.emi-amount { font-size: 12px; font-weight: 700; color: #1a1a2e; }
+.emi-info { font-size: 10px; color: #718096; }

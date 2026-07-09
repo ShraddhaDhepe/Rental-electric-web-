@@ -79,7 +79,7 @@ const AdminProducts = () => {
                           <img src={p.images?.[0]?.url} alt={p.name} className="admin-product-img" />
                           <div>
                             <div style={{ fontWeight: 600, color: '#1a1a2e', fontSize: 13 }}>{p.name.substring(0, 45)}</div>
-                            <div style={{ fontSize: 11, color: '#6C63FF' }}>{p.brand}</div>
+                            <div style={{ fontSize: 11, color: '#E8201A' }}>{p.brand}</div>
                           </div>
                         </div>
                       </td>
@@ -92,7 +92,7 @@ const AdminProducts = () => {
                       </td>
                       <td>{p.availableForRent ? '✅' : '❌'}</td>
                       <td>
-                        <span style={{ fontSize: 12, color: p.isFeatured ? '#6C63FF' : '#a0aec0', fontWeight: 600 }}>
+                        <span style={{ fontSize: 12, color: p.isFeatured ? '#E8201A' : '#a0aec0', fontWeight: 600 }}>
                           {p.isFeatured ? '⭐ Featured' : 'Regular'}
                         </span>
                       </td>
@@ -125,3 +125,4 @@ const AdminProducts = () => {
 };
 
 export default AdminProducts;
+

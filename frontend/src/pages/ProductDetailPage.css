@@ -10,7 +10,7 @@
   flex-wrap: wrap;
 }
 .breadcrumb span { cursor: pointer; transition: color 0.2s; }
-.breadcrumb span:hover { color: #6C63FF; }
+.breadcrumb span:hover { color: #E8201A; }
 .breadcrumb .current { color: #2d3748; cursor: default; font-weight: 500; }
 
 .detail-main {
@@ -49,7 +49,7 @@
   color: #4a5568;
   transition: all 0.2s;
 }
-.img-nav:hover { background: #6C63FF; color: white; }
+.img-nav:hover { background: #E8201A; color: white; }
 .img-nav.prev { left: 12px; }
 .img-nav.next { right: 12px; }
 
@@ -65,7 +65,7 @@
   padding: 0;
   transition: border-color 0.2s;
 }
-.thumbnail.active { border-color: #6C63FF; }
+.thumbnail.active { border-color: #E8201A; }
 .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Info */
@@ -78,7 +78,7 @@
   margin-bottom: 6px;
 }
 .detail-brand { font-size: 14px; color: #718096; margin-bottom: 12px; }
-.detail-brand strong { color: #6C63FF; }
+.detail-brand strong { color: #E8201A; }
 
 .detail-rating {
   display: flex;
@@ -118,7 +118,7 @@
   font-family: inherit;
 }
 .order-type-toggle button.active {
-  background: #6C63FF;
+  background: #E8201A;
   color: white;
 }
 
@@ -151,8 +151,8 @@
   transition: all 0.2s;
   font-family: inherit;
 }
-.plan-card:hover { border-color: #6C63FF; }
-.plan-card.selected { border-color: #6C63FF; background: #eef2ff; }
+.plan-card:hover { border-color: #E8201A; }
+.plan-card.selected { border-color: #E8201A; background: #fff0ef; }
 .plan-discount {
   position: absolute;
   top: -8px;
@@ -165,7 +165,7 @@
   border-radius: 4px;
 }
 .plan-duration { font-size: 13px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
-.plan-rent { font-size: 18px; font-weight: 800; color: #6C63FF; }
+.plan-rent { font-size: 18px; font-weight: 800; color: #E8201A; }
 .plan-rent small { font-size: 12px; }
 .plan-total { font-size: 11px; color: #718096; margin-top: 4px; }
 .plan-deposit { font-size: 11px; color: #718096; }
@@ -227,7 +227,7 @@
 .btn-add-cart {
   flex: 1;
   padding: 14px 24px;
-  background: linear-gradient(135deg, #6C63FF, #5548D9);
+  background: linear-gradient(135deg, #E8201A, #C41810);
   color: white;
   border: none;
   border-radius: 12px;
@@ -240,11 +240,11 @@
   gap: 8px;
   transition: all 0.3s;
   font-family: inherit;
-  box-shadow: 0 4px 16px rgba(108,99,255,0.3);
+  box-shadow: 0 4px 16px rgba(232,32,26,0.3);
 }
 .btn-add-cart:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(108,99,255,0.4);
+  box-shadow: 0 8px 24px rgba(232,32,26,0.4);
 }
 .btn-add-cart:disabled { background: #e2e8f0; color: #a0aec0; cursor: not-allowed; box-shadow: none; }
 .btn-wishlist {
@@ -304,8 +304,8 @@
   font-family: inherit;
   text-transform: capitalize;
 }
-.tab-nav button.active { color: #6C63FF; border-bottom-color: #6C63FF; }
-.tab-nav button:hover { color: #6C63FF; }
+.tab-nav button.active { color: #E8201A; border-bottom-color: #E8201A; }
+.tab-nav button:hover { color: #E8201A; }
 .tab-content { padding: 28px; }
 
 .tab-description p { font-size: 15px; color: #4a5568; line-height: 1.8; margin-bottom: 20px; }
@@ -368,10 +368,10 @@
   margin-bottom: 12px;
   outline: none;
 }
-.review-form textarea:focus { border-color: #6C63FF; }
+.review-form textarea:focus { border-color: #E8201A; }
 .submit-review-btn {
   padding: 10px 20px;
-  background: #6C63FF;
+  background: #E8201A;
   color: white;
   border: none;
   border-radius: 8px;
@@ -391,7 +391,7 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6C63FF, #5548D9);
+  background: linear-gradient(135deg, #E8201A, #C41810);
   color: white;
   display: flex;
   align-items: center;
@@ -410,3 +410,48 @@
   .plan-grid { grid-template-columns: 1fr 1fr; }
   .detail-highlights { grid-template-columns: 1fr; }
 }
+
+/* ── Why Rent Tab ── */
+.tab-why-rent {}
+.tab-why-rent h4 { font-size: 18px; font-weight: 800; color: #1a1a2e; margin-bottom: 20px; }
+.why-rent-benefits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.benefit-item {
+  display: flex;
+  gap: 14px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1.5px solid #e2e8f0;
+  align-items: flex-start;
+}
+.benefit-icon { font-size: 28px; flex-shrink: 0; }
+.benefit-item strong { display: block; font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+.benefit-item p { font-size: 13px; color: #718096; line-height: 1.6; }
+
+.damage-protection {
+  background: linear-gradient(135deg, #fffbea, #fef9e7);
+  border: 1.5px solid #F5B800;
+  border-radius: 14px;
+  padding: 20px;
+}
+.damage-protection h4 { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+.damage-protection p { font-size: 13px; color: #4a5568; margin-bottom: 14px; }
+.protection-plans { display: flex; gap: 12px; flex-wrap: wrap; }
+.protection-option {
+  flex: 1; min-width: 150px;
+  background: white;
+  border: 1.5px solid #F5B800;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex; flex-direction: column; gap: 3px;
+}
+.protection-option strong { font-size: 14px; font-weight: 700; color: #1a1a2e; }
+.protection-option span { font-size: 18px; font-weight: 800; color: #D49E00; }
+.protection-option small { font-size: 11px; color: #718096; }
+
+@media (max-width: 600px) { .why-rent-benefits { grid-template-columns: 1fr; } }

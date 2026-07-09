@@ -9,6 +9,7 @@ import { fetchWishlist } from './store/slices/wishlistSlice';
 // Layout
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import LiveChat from './components/common/LiveChat';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -23,6 +24,11 @@ import WishlistPage from './pages/WishlistPage';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import FAQPage from './pages/FAQPage';
+import SupportPage from './pages/SupportPage';
+import OffersPage from './pages/OffersPage';
+import BlogPage from './pages/BlogPage';
+import RentVsBuyPage from './pages/RentVsBuyPage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminOrders from './pages/admin/AdminOrders';
@@ -36,7 +42,7 @@ import ScrollToTop from './components/common/ScrollToTop';
 
 function App() {
   const dispatch = useDispatch();
-  const { token, isAuthenticated } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (token) {
@@ -73,6 +79,13 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
+          {/* Info / Content Pages */}
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/support" element={<SupportPage />} />
+          <Route path="/offers" element={<OffersPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/rent-vs-buy" element={<RentVsBuyPage />} />
+
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/cart" element={<CartPage />} />
@@ -98,6 +111,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <LiveChat />
     </Router>
   );
 }

@@ -1,0 +1,141 @@
+.support-page { padding-bottom: 60px; }
+
+.support-hero {
+  background: linear-gradient(135deg, #E8201A, #C41810);
+  padding: 60px 0 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.support-hero h1 { font-size: 36px; font-weight: 800; color: white; margin-bottom: 10px; }
+.support-hero p { font-size: 16px; color: rgba(255,255,255,0.8); }
+
+.support-success {
+  text-align: center;
+  padding: 80px 20px;
+}
+.success-icon { font-size: 64px; margin-bottom: 20px; }
+.support-success h2 { font-size: 28px; font-weight: 800; color: #1a1a2e; margin-bottom: 12px; }
+.support-success p { font-size: 16px; color: #718096; margin-bottom: 28px; }
+
+.support-channels { margin-bottom: 48px; }
+.support-channels h2 { font-size: 24px; font-weight: 800; color: #1a1a2e; margin-bottom: 20px; }
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.channel-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.channel-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+.channel-icon {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 14px;
+}
+.channel-phone .channel-icon { background: linear-gradient(135deg, #E8201A, #C41810); }
+.channel-whatsapp .channel-icon { background: linear-gradient(135deg, #25D366, #128C7E); }
+.channel-email .channel-icon { background: linear-gradient(135deg, #1a1a2e, #2d2d5e); }
+.channel-live .channel-icon { background: linear-gradient(135deg, #F5B800, #D49E00); }
+.channel-card h3 { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+.channel-card p { font-size: 13px; color: #718096; margin-bottom: 14px; }
+.channel-cta {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #E8201A;
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+.channel-cta:hover { background: #C41810; }
+.channel-cta-btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.channel-hours {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #718096;
+}
+
+.support-content {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  align-items: start;
+}
+.support-form-section h2 { font-size: 22px; font-weight: 800; color: #1a1a2e; margin-bottom: 6px; }
+.support-form-section > p { font-size: 14px; color: #718096; margin-bottom: 24px; }
+.support-form {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.support-form textarea { resize: vertical; min-height: 120px; }
+
+.support-sidebar { display: flex; flex-direction: column; gap: 20px; }
+.support-office, .support-quick-links, .support-response-times {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.support-office h3, .support-quick-links h3, .support-response-times h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #E8201A;
+}
+.office-info {
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.office-icon { color: #E8201A; margin-top: 3px; flex-shrink: 0; font-size: 16px; }
+.office-info p { font-size: 13px; color: #4a5568; line-height: 1.6; }
+.support-quick-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.support-quick-links li a {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: #4a5568; text-decoration: none;
+  transition: color 0.2s;
+}
+.support-quick-links li a:hover { color: #E8201A; }
+.support-quick-links li a svg { color: #E8201A; }
+.response-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: #4a5568;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.response-item:last-child { border-bottom: none; }
+.response-item svg { color: #E8201A; }
+.response-item strong { color: #1a1a2e; }
+
+@media (max-width: 1024px) { .channels-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  .support-content { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .channels-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) { .channels-grid { grid-template-columns: 1fr; } }

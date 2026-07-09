@@ -1,0 +1,105 @@
+.offers-page { padding-bottom: 60px; }
+
+.offers-hero {
+  background: linear-gradient(135deg, #E8201A, #C41810, #8b0000);
+  padding: 60px 0 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.offers-hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.2);
+  color: white; padding: 5px 14px;
+  border-radius: 50px; font-size: 13px; font-weight: 700;
+  margin-bottom: 14px;
+}
+.offers-hero h1 { font-size: 36px; font-weight: 800; color: white; margin-bottom: 10px; }
+.offers-hero p { font-size: 16px; color: rgba(255,255,255,0.8); }
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.offer-detail-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s;
+}
+.offer-detail-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+
+.offer-header { padding: 24px; }
+.offer-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.offer-tag-badge {
+  color: white; font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 50px; letter-spacing: 0.5px;
+}
+.offer-emoji { font-size: 28px; }
+.offer-header h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.offer-header p { font-size: 13px; color: #4a5568; line-height: 1.6; }
+
+.offer-body { padding: 20px 24px 24px; }
+.offer-pricing { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.offer-from { display: flex; align-items: center; gap: 8px; }
+.offer-icon { font-size: 16px; }
+.offer-from div { display: flex; flex-direction: column; }
+.offer-from span { font-size: 11px; color: #718096; }
+.offer-from strong { font-size: 18px; font-weight: 800; }
+.save-badge {
+  background: #dcfce7; color: #16a34a;
+  font-size: 11px; font-weight: 700;
+  padding: 4px 10px; border-radius: 50px;
+}
+.offer-expires {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: #718096; margin-bottom: 16px;
+}
+.offer-expires strong { color: #1a1a2e; }
+.offer-btn {
+  display: flex; align-items: center; gap: 7px;
+  width: 100%; justify-content: center;
+  padding: 11px;
+  color: white; text-decoration: none;
+  border-radius: 10px; font-size: 14px; font-weight: 700;
+  transition: opacity 0.2s;
+}
+.offer-btn:hover { opacity: 0.88; }
+
+/* Coupons */
+.coupon-section { padding: 40px 0; }
+.coupon-section h2 { font-size: 24px; font-weight: 800; color: #1a1a2e; margin-bottom: 20px; }
+.coupon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.coupon-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px dashed #e2e8f0;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.coupon-card:hover { border-color: #E8201A; }
+.coupon-code {
+  font-size: 18px; font-weight: 800;
+  color: #E8201A; letter-spacing: 2px;
+  background: #fff0ef; padding: 8px 14px;
+  border-radius: 8px; margin-bottom: 10px;
+  display: inline-block;
+}
+.coupon-card p { font-size: 13px; color: #1a1a2e; font-weight: 600; margin-bottom: 4px; }
+.coupon-card span { font-size: 11px; color: #718096; display: block; margin-bottom: 12px; }
+.copy-btn {
+  padding: 7px 16px;
+  background: #1a1a2e; color: white;
+  border: none; border-radius: 7px;
+  font-size: 12px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: background 0.2s;
+}
+.copy-btn:hover { background: #E8201A; }
+
+@media (max-width: 900px) { .offers-grid { grid-template-columns: repeat(2, 1fr); } .coupon-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px) { .offers-grid { grid-template-columns: 1fr; } .coupon-grid { grid-template-columns: 1fr; } }
