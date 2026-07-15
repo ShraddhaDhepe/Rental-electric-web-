@@ -565,3 +565,280 @@
   .why-rent-grid { grid-template-columns: 1fr; }
   .offers-grid { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════════════
+   RENTOMOJO-STYLE LAYOUT — Hero Search + Banner + Category Grid
+══════════════════════════════════════════════ */
+
+/* ── Hero Search Bar ── */
+.hero-search-section {
+  background: #fff;
+  padding: 20px 0 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.hero-search-bar {
+  display: flex;
+  align-items: center;
+  background: #f4f4f4;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 680px;
+  margin: 0 auto 12px;
+  transition: border-color 0.2s;
+}
+.hero-search-bar:focus-within {
+  border-color: #E8201A;
+  box-shadow: 0 0 0 3px rgba(232,32,26,0.08);
+}
+.hero-search-icon {
+  color: #a0aec0;
+  font-size: 15px;
+  margin-left: 16px;
+  flex-shrink: 0;
+}
+.hero-search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #1a1a2e;
+  outline: none;
+  font-family: inherit;
+}
+.hero-search-bar input::placeholder { color: #a0aec0; }
+.hero-search-bar button {
+  padding: 12px 20px;
+  background: #E8201A;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.hero-search-bar button:hover { background: #C41810; }
+.hero-search-tags {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+.search-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  background: #f0f0f0;
+  padding: 4px 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.search-tag:hover { background: #fff0ef; color: #E8201A; }
+
+/* ── Main Grid: Banner + Categories ── */
+.main-content-section {
+  padding: 28px 0 40px;
+  background: #fff;
+}
+.main-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ── Left Banner Panel ── */
+.banner-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.banner-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, opacity 0.3s;
+  animation: fadeSlide 0.5s ease;
+}
+@keyframes fadeSlide {
+  from { opacity: 0.6; transform: scale(1.04); }
+  to   { opacity: 1;   transform: scale(1); }
+}
+.banner-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  padding: 24px 20px 20px;
+}
+.banner-tag {
+  display: inline-block;
+  background: #E8201A;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.banner-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.2;
+  white-space: pre-line;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  color: #1a1a2e;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.banner-cta:hover { background: #E8201A; color: white; }
+.banner-dots {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  display: flex;
+  gap: 6px;
+}
+.banner-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.45);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
+}
+.banner-dot.active {
+  background: white;
+  width: 20px;
+  border-radius: 4px;
+}
+.mini-trust-strip {
+  display: flex;
+  justify-content: space-around;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a5568;
+}
+.mini-trust-strip span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.mini-trust-strip svg { color: #E8201A; }
+
+/* ── Right Categories Panel ── */
+.categories-panel { }
+.panel-header { margin-bottom: 20px; }
+.panel-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+.red-text { color: #E8201A; }
+.red-dash { color: #E8201A; font-weight: 300; }
+
+/* RentoMojo-style category tiles */
+.categories-grid-rm {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.cat-tile {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 12px;
+  background: white;
+  transition: all 0.2s;
+}
+.cat-tile:hover {
+  border-color: #E8201A;
+  box-shadow: 0 4px 16px rgba(232,32,26,0.1);
+  transform: translateY(-3px);
+}
+.cat-tile-img-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+.cat-tile-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.cat-tile:hover .cat-tile-img-wrap img { transform: scale(1.08); }
+.cat-tile-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4a5568;
+  text-align: center;
+  line-height: 1.3;
+}
+.view-more-cats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #E8201A;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 12px 0 0;
+  font-family: inherit;
+  transition: gap 0.2s;
+}
+.view-more-cats:hover { gap: 8px; }
+
+/* ── Responsive for new layout ── */
+@media (max-width: 1100px) {
+  .main-grid { grid-template-columns: 260px 1fr; }
+  .categories-grid-rm { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 860px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .banner-card { height: 260px; }
+  .categories-grid-rm { grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 520px) {
+  .categories-grid-rm { grid-template-columns: repeat(3, 1fr); }
+  .banner-card { height: 220px; }
+  .banner-title { font-size: 17px; }
+}

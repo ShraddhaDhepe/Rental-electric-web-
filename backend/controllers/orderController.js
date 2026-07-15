@@ -30,7 +30,7 @@ exports.createOrder = async (req, res) => {
       user: req.user._id,
       orderItems,
       shippingAddress,
-      paymentInfo: { method: paymentMethod || 'razorpay', status: 'pending' },
+      paymentInfo: { method: paymentMethod || 'upi', status: 'pending' },
       itemsPrice,
       securityDeposit: securityDeposit || 0,
       deliveryCharges: deliveryCharges || 0,

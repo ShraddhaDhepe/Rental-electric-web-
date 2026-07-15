@@ -56,6 +56,15 @@ export const verifyPayment = createAsyncThunk('orders/verifyPayment', async (dat
   }
 });
 
+export const confirmUpiPayment = createAsyncThunk('orders/confirmUpi', async (data, { rejectWithValue }) => {
+  try {
+    const res = await api.post('/payment/confirm-upi', data);
+    return res.data;
+  } catch (err) {
+    return rejectWithValue(err.response?.data?.message);
+  }
+});
+
 const orderSlice = createSlice({
   name: 'orders',
   initialState: {
@@ -109,6 +118,15 @@ const orderSlice = createSlice({
       })
       .addCase(verifyPayment.rejected, (state, action) => {
         toast.error(action.payload || 'Payment verification failed');
+      })
+      .addCase(confirmUpiPayment.pending, (state) => { state.paymentLoading = true; })
+      .addCase(confirmUpiPayment.fulfilled, (state, action) => {
+        state.paymentLoading = false;
+        state.order = action.payload.order;
+      })
+      .addCase(confirmUpiPayment.rejected, (state, action) => {
+        state.paymentLoading = false;
+        toast.error(action.payload || 'Payment confirmation failed');
       });
   }
 });

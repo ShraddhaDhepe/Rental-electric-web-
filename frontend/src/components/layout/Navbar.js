@@ -6,8 +6,7 @@ import {
   FaShoppingCart, FaHeart, FaUser, FaBars, FaTimes,
   FaSearch, FaChevronDown, FaTv, FaSnowflake,
   FaWind, FaLaptop, FaMobileAlt, FaTshirt, FaBolt,
-  FaMapMarkerAlt, FaPhoneAlt, FaCouch, FaTag, FaQuestionCircle,
-  FaHeadset
+  FaMapMarkerAlt, FaCouch, FaTag
 } from 'react-icons/fa';
 import { BrandLogo } from '../common/BrandLogo';
 import './Navbar.css';
@@ -35,9 +34,9 @@ const navLinks = [
 const cities = ['Mumbai', 'Delhi', 'Bangalore', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata', 'Ahmedabad'];
 
 const Navbar = () => {
-  const dispatch   = useDispatch();
   const navigate   = useNavigate();
   const location   = useLocation();
+  const dispatch   = useDispatch();
   const { isAuthenticated, user } = useSelector(s => s.auth);
   const { cart }     = useSelector(s => s.cart);
   const { wishlist } = useSelector(s => s.wishlist);
@@ -46,12 +45,10 @@ const Navbar = () => {
   const [searchQuery,   setSearchQuery]   = useState('');
   const [dropdownOpen,  setDropdownOpen]  = useState(false);
   const [activeNavDrop, setActiveNavDrop] = useState(null);
-  const [cityDropOpen,  setCityDropOpen]  = useState(false);
-  const [selectedCity,  setSelectedCity]  = useState('Bangalore');
+  const [selectedCity,  setSelectedCity]  = useState('Pune');
 
   const userRef = useRef(null);
   const navRef  = useRef(null);
-  const cityRef = useRef(null);
 
   const cartCount     = cart?.items?.length || 0;
   const wishlistCount = wishlist?.products?.length || 0;
@@ -60,14 +57,12 @@ const Navbar = () => {
     setMobileOpen(false);
     setDropdownOpen(false);
     setActiveNavDrop(null);
-    setCityDropOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
     const handleClick = e => {
       if (userRef.current && !userRef.current.contains(e.target)) setDropdownOpen(false);
       if (navRef.current  && !navRef.current.contains(e.target))  setActiveNavDrop(null);
-      if (cityRef.current && !cityRef.current.contains(e.target)) setCityDropOpen(false);
     };
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
@@ -98,24 +93,6 @@ const Navbar = () => {
   return (
     <nav className="navbar">
 
-      {/* ── Top bar ── */}
-      <div className="navbar-top">
-        <div className="container navbar-top-inner">
-          <div className="top-bar-left">
-            <span>🚀 Free delivery on orders above ₹999</span>
-            <span className="top-divider">|</span>
-            <span>RENT SMART. OWN LESS.</span>
-          </div>
-          <div className="top-bar-right">
-            <a href="tel:18001234567" className="top-link"><FaPhoneAlt size={11} /> 1800-123-4567</a>
-            <span className="top-divider">|</span>
-            <Link to="/support" className="top-link"><FaHeadset size={11} /> Support</Link>
-            <span className="top-divider">|</span>
-            <Link to="/faq" className="top-link"><FaQuestionCircle size={11} /> FAQ</Link>
-          </div>
-        </div>
-      </div>
-
       {/* ── Main bar ── */}
       <div className="navbar-main">
         <div className="container navbar-inner">
@@ -125,35 +102,15 @@ const Navbar = () => {
             <BrandLogo size="md" />
           </Link>
 
-          {/* Location Selector */}
-          <div className="location-selector" ref={cityRef}>
-            <button
-              className="location-btn"
-              onClick={() => setCityDropOpen(o => !o)}
-              aria-label="Select city"
-            >
+          {/* Location — fixed Pune */}
+          <div className="location-selector">
+            <div className="location-btn">
               <FaMapMarkerAlt className="loc-icon" />
               <div className="loc-text">
                 <span className="loc-label">Deliver to</span>
-                <span className="loc-city">{selectedCity} <FaChevronDown size={9} /></span>
+                <span className="loc-city">Pune</span>
               </div>
-            </button>
-            {cityDropOpen && (
-              <div className="city-dropdown">
-                <p className="city-dropdown-title">Select your city</p>
-                <div className="city-grid">
-                  {cities.map(city => (
-                    <button
-                      key={city}
-                      className={`city-item ${selectedCity === city ? 'active' : ''}`}
-                      onClick={() => { setSelectedCity(city); setCityDropOpen(false); }}
-                    >
-                      {city}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+            </div>
           </div>
 
           {/* Search */}

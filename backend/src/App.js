@@ -23,15 +23,8 @@ import WishlistPage from './pages/WishlistPage';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import AdminProducts from './pages/admin/AdminProducts';
-import AdminOrders from './pages/admin/AdminOrders';
-import AdminUsers from './pages/admin/AdminUsers';
-import AdminAddProduct from './pages/admin/AdminAddProduct';
-import AdminEditProduct from './pages/admin/AdminEditProduct';
 import NotFoundPage from './pages/NotFoundPage';
 import ProtectedRoute from './components/common/ProtectedRoute';
-import AdminRoute from './components/common/AdminRoute';
 import ScrollToTop from './components/common/ScrollToTop';
 
 function App() {
@@ -85,14 +78,7 @@ function App() {
           </Route>
 
           {/* Admin Routes */}
-          <Route element={<AdminRoute />}>
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/products" element={<AdminProducts />} />
-            <Route path="/admin/products/add" element={<AdminAddProduct />} />
-            <Route path="/admin/products/edit/:id" element={<AdminEditProduct />} />
-            <Route path="/admin/orders" element={<AdminOrders />} />
-            <Route path="/admin/users" element={<AdminUsers />} />
-          </Route>
+          <Route path="/admin" element={<NotFoundPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
