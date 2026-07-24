@@ -93,7 +93,7 @@ const Footer = () => {
               <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><FaYoutube /></a>
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
             </div>
-            {/* App download */}
+            {/* App download
             <div className="app-download">
               <p className="app-download-title">Download Our App</p>
               <div className="app-buttons">
@@ -113,8 +113,8 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-          </div>
-
+           */}
+           </div>
           {/* Company */}
           <div className="footer-col">
             <h4>Company</h4>
@@ -170,9 +170,9 @@ const Footer = () => {
           <div className="footer-col footer-contact">
             <h4>Contact Us</h4>
             <div className="contact-info">
-              <div><FaPhoneAlt /> <span>1800-123-4567 (Toll Free)</span></div>
+              <div><FaPhoneAlt /> <span>9764114499</span></div>
               <div><FaEnvelope /> <span>support@rentselectronics.com</span></div>
-              <div><FaMapMarkerAlt /> <span>123, Tech Park, Bengaluru, Karnataka 560001</span></div>
+              <div><FaMapMarkerAlt /> <span>Pune</span></div>
             </div>
             <div className="working-hours">
               <FaCheckCircle className="hours-icon" />
@@ -209,7 +209,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <p>© {new Date().getFullYear()} rentselectronics.com — All rights reserved.</p>
-          <p>RENT SMART. OWN LESS. | Powered by MERN Stack</p>
+          <p>RENT SMART. OWN LESS.</p>
         </div>
       </div>
     </footer>

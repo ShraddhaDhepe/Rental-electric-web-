@@ -156,7 +156,7 @@ const AdminAddProduct = () => {
               <h3>Pricing & Stock</h3>
               <div className="form-row-3">
                 <div className="form-group">
-                  <label className="form-label">Buy Price (₹) *</label>
+                  <label className="form-label"> Rent Price (₹) *</label>
                   <input className="form-control" type="number" required value={form.buyPrice} onChange={e => setField('buyPrice', e.target.value)} />
                 </div>
                 <div className="form-group">
@@ -248,71 +248,7 @@ const AdminAddProduct = () => {
             </div>
 
             {/* Rental Plans */}
-            <div className="form-section">
-              <h3>Rental Plans</h3>
-              {form.rentalPlans.map((plan, i) => (
-                <div key={i} className="rental-plan-row">
-                  <div className="form-group">
-                    <label className="form-label">Duration</label>
-                    <input className="form-control" placeholder="3 months" value={plan.duration} onChange={e => updatePlan(i, 'duration', e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Months</label>
-                    <input className="form-control" type="number" value={plan.months} onChange={e => updatePlan(i, 'months', e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Monthly Rent</label>
-                    <input className="form-control" type="number" value={plan.monthlyRent} onChange={e => updatePlan(i, 'monthlyRent', e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Total Amount</label>
-                    <input className="form-control" type="number" value={plan.totalAmount} onChange={e => updatePlan(i, 'totalAmount', e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label className="form-label">Security Deposit</label>
-                    <input className="form-control" type="number" value={plan.securityDeposit} onChange={e => updatePlan(i, 'securityDeposit', e.target.value)} />
-                  </div>
-                  <button type="button" className="remove-plan-btn" onClick={() => removePlan(i)}><FaTrash size={11} /></button>
-                </div>
-              ))}
-              <button type="button" className="add-plan-btn" onClick={addRentalPlan}>
-                <FaPlus size={11} /> Add Rental Plan
-              </button>
-            </div>
-
-            {/* Specifications */}
-            <div className="form-section">
-              <h3>Specifications</h3>
-              {form.specifications.map((spec, i) => (
-                <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 10, marginBottom: 8, alignItems: 'end' }}>
-                  <input className="form-control" placeholder="Key (e.g. Screen Size)" value={spec.key} onChange={e => updateSpec(i, 'key', e.target.value)} />
-                  <input className="form-control" placeholder="Value (e.g. 43 inches)" value={spec.value} onChange={e => updateSpec(i, 'value', e.target.value)} />
-                  <button type="button" className="remove-plan-btn" onClick={() => removeSpec(i)}><FaTrash size={11} /></button>
-                </div>
-              ))}
-              <button type="button" className="add-plan-btn" onClick={addSpec}>
-                <FaPlus size={11} /> Add Specification
-              </button>
-            </div>
-
-            {/* Features & Tags */}
-            <div className="form-section">
-              <h3>Features & Tags</h3>
-              <div className="form-group">
-                <label className="form-label">Features (one per line)</label>
-                <textarea
-                  className="form-control"
-                  rows={3}
-                  value={form.features.join('\n')}
-                  onChange={e => setField('features', e.target.value.split('\n'))}
-                  placeholder="4K UHD&#10;Smart TV&#10;Built-in Wi-Fi"
-                />
-              </div>
-              <div className="form-group">
-                <label className="form-label">Tags (comma separated)</label>
-                <input className="form-control" placeholder="tv, samsung, 4k, smart tv" value={form.tags} onChange={e => setField('tags', e.target.value)} />
-              </div>
-            </div>
+           
 
             <div style={{ display: 'flex', gap: 12 }}>
               <button type="submit" className="btn btn-primary btn-lg" disabled={loading}>
