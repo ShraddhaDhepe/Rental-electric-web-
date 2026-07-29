@@ -1,0 +1,328 @@
+/* ═══════════════════════════════════
+   AUTH PAGES  — Login / Register
+   Fits on one screen, no scrolling
+═══════════════════════════════════ */
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── Left panel ── */
+.auth-left {
+  background: linear-gradient(145deg, #1a0000 0%, #3d0000 40%, #1a0000 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+/* decorative circles */
+.auth-left::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(232,32,26,.15);
+  top: -80px; right: -80px;
+}
+.auth-left::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(245,184,0,.1);
+  bottom: -60px; left: -60px;
+}
+
+.auth-brand {
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+  /* make logo visible on dark bg */
+  filter: brightness(0) invert(1);
+}
+.auth-brand-tagline {
+  font-size: 15px;
+  color: rgba(255,255,255,.7);
+  margin-top: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  filter: none;   /* don't invert this text */
+}
+
+/* un-invert the BrandLogo on dark — use white version via CSS recolor */
+.auth-brand > div {
+  filter: brightness(10) !important;
+}
+
+.auth-left-text {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;        /* reduced from 28px */
+}
+.auth-left-text h2 {
+  font-size: 20px;             /* reduced from 26px */
+  font-weight: 800;
+  color: white;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.auth-left-text p {
+  font-size: 13px;             /* reduced from 14px */
+  color: rgba(255,255,255,.55);
+  line-height: 1.5;
+}
+
+.auth-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+.auth-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255,255,255,.85);
+  font-weight: 500;
+}
+.auth-feature span { font-size: 20px; }
+
+/* ── Right panel ── */
+.auth-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  padding: 24px 20px;
+  overflow-y: auto;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 18px;
+  padding: 32px 36px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 28px rgba(0,0,0,0.08);
+}
+
+/* tighter spacing for register to fit on screen */
+.auth-card.register-card {
+  padding: 24px 28px;
+}
+.auth-card.register-card .form-group {
+  margin-bottom: 12px;
+}
+.auth-card.register-card .form-control {
+  padding: 9px 14px;
+  font-size: 13px;
+}
+.auth-card.register-card .form-label {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.auth-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+.auth-subtitle {
+  font-size: 13px;
+  color: #718096;
+  margin-bottom: 20px;
+}
+
+/* Input with icon */
+.input-icon-wrap { position: relative; display: flex; align-items: center; }
+.input-icon {
+  position: absolute;
+  left: 13px;
+  color: #c0c8d4;              /* lighter icon — more faded */
+  font-size: 14px;
+  pointer-events: none;
+}
+/* more gap between icon and placeholder text */
+.form-control.with-icon { padding-left: 44px; }
+.password-toggle {
+  position: absolute;
+  right: 11px;
+  background: none;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+.password-toggle:hover { color: #E8201A; }
+
+/* faded placeholders on all auth inputs */
+.auth-card input::placeholder {
+  color: #c0c8d4;
+  opacity: 1;                  /* override browser default that can double-fade */
+}
+
+/* Primary button in auth */
+.auth-card .btn-primary {
+  background: #E8201A;
+  color: white;
+  font-weight: 700;
+}
+.auth-card .btn-primary:hover { background: #C41810; }
+
+/* Error box */
+.auth-error {
+  background: #fee2e2;
+  color: #E8201A;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Terms & switch */
+.auth-switch {
+  font-size: 13px;
+  color: #718096;
+  text-align: center;
+  margin-top: 16px;
+}
+.auth-switch a { color: #E8201A; font-weight: 700; }
+.auth-terms {
+  font-size: 11px;
+  color: #a0aec0;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.auth-terms a { color: #E8201A; }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 860px) {
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-left { display: none; }
+  .auth-right {
+    min-height: 100vh;
+    padding: 24px 16px;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+  .auth-card { padding: 28px 22px; }
+  .auth-card.register-card { padding: 22px 18px; }
+}
+
+/* ═══════════════════════════════════
+   REGISTER — floating labels, no icons/placeholders
+═══════════════════════════════════ */
+
+/* wrapper for floating label — needs position:relative */
+.register-card .form-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* the input itself */
+.reg-input {
+  width: 100%;
+  padding: 20px 14px 8px !important;   /* top padding makes room for label */
+  font-size: 14px !important;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  color: #1a1a1a;
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.reg-input:focus {
+  border-color: #E8201A;
+  box-shadow: 0 0 0 3px rgba(232,32,26,.08);
+}
+.reg-input.input-err { border-color: #ef4444 !important; }
+.reg-input.input-ok  { border-color: #22c55e !important; }
+
+/* floating label */
+.reg-label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #a0aec0;
+  pointer-events: none;
+  transition: top .18s ease, font-size .18s ease, color .18s ease;
+  background: transparent;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* label floats up when input focused OR has value */
+.reg-input:focus ~ .reg-label,
+.reg-label.active {
+  top: 10px;
+  transform: translateY(0);
+  font-size: 11px;
+  color: #E8201A;
+  font-weight: 600;
+}
+
+/* password wrap — for the eye toggle */
+.reg-pwd-wrap {
+  position: relative;
+}
+.reg-pwd-wrap .reg-input { padding-right: 40px !important; }
+.reg-eye {
+  position: absolute;
+  right: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.reg-eye:hover { color: #E8201A; }
+
+/* inline field error */
+.field-err {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ef4444;
+  padding-left: 2px;
+}
+
+/* password strength bar */
+.pwd-strength {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding-left: 2px;
+}
+.pwd-strength-bar {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+.pwd-seg {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  transition: background .3s;
+}

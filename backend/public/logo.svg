@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <!-- Background white -->
+  <rect width="400" height="200" fill="white"/>
+
+  <!-- RE Icon -->
+  <!-- R - Red -->
+  <text x="80" y="95" font-family="Arial Black, Arial" font-weight="900" font-size="90" fill="#E8201A" letter-spacing="-5">R</text>
+  <!-- E - Yellow/Gold (overlapping) -->
+  <text x="130" y="95" font-family="Arial Black, Arial" font-weight="900" font-size="90" fill="#F5B800" letter-spacing="-5">E</text>
+
+  <!-- rents - Red text -->
+  <text x="32" y="138" font-family="Arial, sans-serif" font-weight="800" font-size="32" fill="#E8201A">rents</text>
+  <!-- electronics - Yellow/Gold text -->
+  <text x="116" y="138" font-family="Arial, sans-serif" font-weight="800" font-size="32" fill="#F5B800">electronics</text>
+  <!-- .com - Red text -->
+  <text x="328" y="138" font-family="Arial, sans-serif" font-weight="800" font-size="22" fill="#E8201A">.com</text>
+
+  <!-- Red underline -->
+  <line x1="32" y1="148" x2="368" y2="148" stroke="#E8201A" stroke-width="2.5"/>
+
+  <!-- Tagline -->
+  <text x="200" y="172" font-family="Arial, sans-serif" font-weight="400" font-size="14" fill="#333" text-anchor="middle" letter-spacing="2">RENT SMART. OWN LESS.</text>
+</svg>
