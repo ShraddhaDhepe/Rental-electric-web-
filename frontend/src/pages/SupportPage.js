@@ -50,14 +50,14 @@ const SupportPage = () => {
               <div className="channel-icon"><FaPhoneAlt /></div>
               <h3>Phone Support</h3>
               <p>Talk to our experts directly</p>
-              <a href="tel:18001234567" className="channel-cta">1800-123-4567</a>
+              <a href="tel:9764114499" className="channel-cta">9764114499</a>
               <span className="channel-hours"><FaClock size={12} /> Mon–Sat: 9AM – 8PM</span>
             </div>
             <div className="channel-card channel-whatsapp">
               <div className="channel-icon"><FaWhatsapp /></div>
               <h3>WhatsApp</h3>
               <p>Quick responses on WhatsApp</p>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="channel-cta">
+              <a href="https://wa.me/919764114499" target="_blank" rel="noreferrer" className="channel-cta">
                 Chat on WhatsApp
               </a>
               <span className="channel-hours"><FaClock size={12} /> Mon–Sat: 9AM – 10PM</span>
@@ -167,8 +167,8 @@ const SupportPage = () => {
               <div className="office-info">
                 <FaMapMarkerAlt className="office-icon" />
                 <div>
-                  <p>123, Tech Park, Whitefield</p>
-                  <p>Bengaluru, Karnataka 560001</p>
+                  <p>pune</p>
+                  
                 </div>
               </div>
             </div>
