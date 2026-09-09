@@ -6,6 +6,7 @@ import { clearCart } from '../store/slices/cartSlice';
 import { formatCurrency, computeCartTotals } from '../utils/helpers';
 import { FaPlus, FaCheckCircle, FaShieldAlt, FaMobileAlt } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import api from '../utils/api';
 import './CheckoutPage.css';
 
 /**
@@ -36,10 +37,6 @@ import './CheckoutPage.css';
  * ─────────────────────────────────────────────────────────────────────────
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
-// Confirmed from server.js: app.use('/api/payment', require('./routes/paymentRoutes'))
-// singular "payment", and VITE_API_URL already ends in /api, so only add "/payment" here.
-const PAYMENTS_PATH = '/payment';
 const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
 
 // Dynamically loads the Razorpay checkout.js script once
@@ -53,30 +50,10 @@ const loadRazorpayScript = () =>
     document.body.appendChild(script);
   });
 
-// Small fetch wrapper that attaches the auth token, matching `protect` middleware
-const paymentApi = async (path, body, token) => {
-  const res = await fetch(`${API_BASE_URL}${PAYMENTS_PATH}${path}`, {
-    method: 'POST',
-    credentials: 'include', // keep this if your auth also relies on a cookie
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {})
-    },
-    body: JSON.stringify(body)
-  });
-
-  const rawText = await res.text();
-  let data;
-  try {
-    data = rawText ? JSON.parse(rawText) : null;
-  } catch (e) {
-    throw new Error(`Server returned non-JSON response (status ${res.status}): ${rawText.slice(0, 200)}`);
-  }
-
-  if (!res.ok) {
-    throw new Error(data?.message || 'Payment request failed');
-  }
-  return data;
+// Uses the shared axios instance which auto-attaches Bearer token from localStorage
+const paymentApi = async (path, body) => {
+  const res = await api.post(`/payment${path}`, body);
+  return res.data;
 };
 
 // Small inline style for the payment-method badges (avoids depending on a CSS file)
@@ -95,7 +72,7 @@ const CheckoutPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
-  const { user, token: authSliceToken } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const { order, loading, paymentLoading } = useSelector((state) => state.orders);
 
   const items = cart?.items || [];
@@ -183,25 +160,8 @@ const CheckoutPage = () => {
 
       const orderId = await ensureOrderCreated();
 
-      // Tries every common place a JWT usually lives, in order, since we
-      // couldn't confirm which one your app uses. First non-empty wins.
-      const authToken =
-        authSliceToken ||
-        user?.token ||
-        localStorage.getItem('token') ||
-        localStorage.getItem('accessToken') ||
-        localStorage.getItem('authToken') ||
-        JSON.parse(localStorage.getItem('user') || 'null')?.token;
-
-      if (!authToken) {
-        toast.error('You appear to be logged out. Please log in again and retry payment.');
-        setRazorpayLoading(false);
-        return;
-      }
-
       // POST /api/payment/create-order  { amount }
-      // CONFIRMED real response shape: { success, order: { id, amount, currency, ... }, key }
-      const rpResponse = await paymentApi('/create-order', { amount: totalAmount }, authToken);
+      const rpResponse = await paymentApi('/create-order', { amount: totalAmount });
 
       // Handles BOTH response shapes we've seen from your backend:
       //  - wrapped:  { success, order: { id, amount, currency }, key }
@@ -242,7 +202,7 @@ const CheckoutPage = () => {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature
-            }, authToken);
+            });
 
             if (verifyResult?.success) {
               setPaidTxnId(response.razorpay_payment_id);
