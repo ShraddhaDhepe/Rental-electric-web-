@@ -3,18 +3,32 @@ const crypto = require("crypto");
 const Order = require("../models/Order");
 const Cart = require("../models/Cart");
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
-
 // Create Razorpay Order
 exports.createRazorpayOrder = async (req, res) => {
   try {
     const { amount } = req.body;
 
+    if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+      return res.status(500).json({
+        success: false,
+        message: "Razorpay credentials are not configured on the server. Please contact support."
+      });
+    }
+
+    if (!amount || isNaN(amount) || Number(amount) <= 0) {
+      return res.status(400).json({
+        success: false,
+        message: `Invalid amount received: ${amount}. Amount must be a positive number.`
+      });
+    }
+
+    const razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID,
+      key_secret: process.env.RAZORPAY_KEY_SECRET,
+    });
+
     const options = {
-      amount: amount * 100,
+      amount: Math.round(Number(amount) * 100), // ensure integer paise
       currency: "INR",
       receipt: `receipt_${Date.now()}`
     };
@@ -35,6 +49,13 @@ exports.createRazorpayOrder = async (req, res) => {
 exports.verifyRazorpayPayment = async (req, res) => {
 
   try {
+
+    if (!process.env.RAZORPAY_KEY_SECRET) {
+      return res.status(500).json({
+        success: false,
+        message: "Razorpay credentials are not configured on the server."
+      });
+    }
 
     const {
       razorpay_order_id,
